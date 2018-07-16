@@ -6,7 +6,7 @@ function get_letter_interval_2(number_a, number_b) {
   let arry = generateArry(number_a, number_b);
   let stringArry = [];
   arry.forEach(value => {
-    stringArry.push(covert(value));
+    stringArry.push(covert(value-1));
   });
   return stringArry;
 }
@@ -27,12 +27,13 @@ function generateArry(number_a, number_b) {
 
 function covert(number) {
   let char = "";
-  while (number > 1 ) {
-    let i = number % 26;
-    char = charArry.charAt(i) + char;
-    number = parseInt(number / 26);
+  let n = parseInt(number / 26);
+  let m = number % 26;
+  if (n === 0) {
+    char = charArry.charAt(m);
+  }else{
+    char = charArry.charAt(n-1) + charArry.charAt(m);
   }
-  console.log(char);
   return char;
 }
 
